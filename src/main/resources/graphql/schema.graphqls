@@ -1,0 +1,31 @@
+type Employee implements Person{
+    id: ID!
+    name: String!
+    age: Int!
+    gender: Gender!
+    friends:[Employee]
+    job: String!
+    salary: Float!
+}
+
+interface Person{
+    id: ID!
+    name: String!
+    age: Int!
+    gender: Gender!
+    friends:[Employee]
+}
+
+enum Gender{
+    MALE
+    FEMALE
+}
+
+type Query{
+    findEmployeeById(employeeId:ID!): Employee
+}
+
+type Mutation{
+    hireEmployee(name: String!, age: Int!, gender: Gender!, job: String!, salary: Float!): [Employee]
+    associateFriend(myId: ID!, friendId: ID!): Employee
+}
